@@ -41,7 +41,7 @@ const locationSchema = new mongoose.Schema({
   router.post('/saveContact', async (req, res) => {
     try {
       const  contactId = req.body;
-      const newContact = new Contact( contactId );
+      const newContact = new Contact(contactId);
       await newContact.save();
       console.log("the saved contact", contactId);
       res.json({ success: true, message: 'Contact saved successfully' });
@@ -107,8 +107,10 @@ const locationSchema = new mongoose.Schema({
       const location = await Location1.findOne( contactId );
   
       if (location) {
+        console.log("The finding of location in get request", contactId)
         res.json({ success: true, message: 'ContactId exists in the database' });
       } else {
+        console.log("The finding of location in get  in not found request", contactId)
         res.json({ success: false, message: 'ContactId not found in the database' });
       }
     } catch (error) {
