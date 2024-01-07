@@ -88,7 +88,7 @@ const locationSchema = new mongoose.Schema({
       });
   
       await newLocation.save();
-      console.log("The save location to db is working")
+      console.log("The save location to db is working", newLocation)
       res.status(200).json({ message: 'Location saved successfully' });
     } catch (error) {
       console.error(error);
