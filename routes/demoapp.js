@@ -99,20 +99,17 @@ const locationSchema = new mongoose.Schema({
     }
   });
 
-  router.get('/checkContactId/:contactId', async (req, res) => {
+  router.get('/checkContactId/:locationId', async (req, res) => {
     try {
-      const  contactId  = req.params;
+      const { locationId } = req.params;
+      const location = await Location1.findById(locationId);
   
-      // Check if the contactId exists in the database
-      const location = await Location1.findOne( contactId );
-  
-      if (location) {
-        console.log("The finding of location in get request", contactId)
-        res.json({ success: true, message: 'ContactId exists in the database' });
-      } else {
-        console.log("The finding of location in get  in not found request", contactId)
-        res.json({ success: false, message: 'ContactId not found in the database' });
+      if (!location) {
+        return res.status(404).json({ message: 'Location not found' });
       }
+  
+      const contactId = location.contactId;
+      res.status(200).json({ contactId });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
