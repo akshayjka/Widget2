@@ -99,10 +99,10 @@ const locationSchema = new mongoose.Schema({
 
   router.get('/checkContactId/:contactId', async (req, res) => {
     try {
-      const { contactId } = req.params;
+      const  contactId  = req.params;
   
       // Check if the contactId exists in the database
-      const location = await Location1.findOne({ contactId });
+      const location = await Location1.findOne( contactId );
   
       if (location) {
         res.json({ success: true, message: 'ContactId exists in the database' });
