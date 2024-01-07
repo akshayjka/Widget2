@@ -70,21 +70,23 @@ const locationSchema = new mongoose.Schema({
   });
 
   const locationSchema1 = new mongoose.Schema({
+    contactId: String,
     latitude1: Number,
     longitude1: Number,
-    contactId: String, // Add the new field
+     // Add the new field
   });
   
   const Location1 = mongoose.model('Location1', locationSchema1);
 
   router.post('/saveLocation', async (req, res) => {
     try {
-      const { latitude1, longitude1, contactId } = req.body;
+      const { contactId ,latitude1, longitude1, } = req.body;
   
       const newLocation = new Location1({
+        contactId,
         latitude1,
         longitude1,
-        contactId,
+        
       });
   
       await newLocation.save();
