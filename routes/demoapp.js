@@ -105,9 +105,10 @@ const locationSchema = new mongoose.Schema({
       const location = await Location1.findOne( contactId );
   
       if (!location) {
+        console.log(":The log for check contact id",contactId )
         return res.status(404).json({ message: 'ContactId not found' });
       }
-  
+      console.log(":The log for check contact id",contactId )
       res.status(200).json({ message: 'ContactId found', location });
     } catch (error) {
       console.error(error);
