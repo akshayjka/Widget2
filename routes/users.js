@@ -28,6 +28,26 @@ router.post('/submit-form', async (req, res) => {
   }
 });
 
+router.get('/getCustomerName/:customerNumber', async(req,res)=>{
+  try {
+    const { customerNumber } = req.params;
+
+    // Find the customer in the database by customer number
+    const customer = await Customer.findOne({ customerNumber });
+
+    if (customer) {
+      res.status(200).json(customer);
+    } else {
+      res.status(404).json({ message: 'Customer not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
+// Star
+
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
