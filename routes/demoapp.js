@@ -102,7 +102,7 @@ const locationSchema = new mongoose.Schema({
   router.get('/checkContactId/:locationId', async (req, res) => {
     try {
       const { locationId } = req.params;
-      const location = await Location1.findById(locationId);
+      const location = await Location1.findById(locationId).select('contactId');
   
       if (!location) {
         return res.status(404).json({ message: 'Location not found' });
