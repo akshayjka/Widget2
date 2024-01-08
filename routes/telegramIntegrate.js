@@ -28,10 +28,12 @@ router.post('/send-telegram-message', async (req, res) => {
       const result = await response.text();
   
       // You can handle the result or send a success message back to the client
+      console.log("The telegram", text)
       res.status(200).json({ message: 'Telegram message sent successfully', data: result });
     } catch (error) {
       // Handle errors and send an error response
       console.error(error);
+      console.log("The telegram", text)
       res.status(500).json({ message: 'Error sending Telegram message', error: error.message });
     }
   });
