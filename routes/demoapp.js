@@ -99,7 +99,7 @@ const locationSchema = new mongoose.Schema({
     }
   });
 
-  router.get('/checkContactId/:locationId', async (req, res) => {
+  router.get('/checkContactId/:contactId', async (req, res) => {
     try {
       const  contactId  = req.params;
       const location = await Location1.findOne( contactId );
