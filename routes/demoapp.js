@@ -101,18 +101,15 @@ const locationSchema = new mongoose.Schema({
 
   router.get('/checkContactId/:locationId', async (req, res) => {
     try {
-      const locationId  = req.params;
-      const location = await Location1.findById(locationId).select('contactId');
+      const { contactId } = req.params;
+      const location = await Location1.findOne({ contactId });
   
       if (!location) {
-        return res.status(404).json({ message: 'Location not found' });
+        return res.status(404).json({ message: 'ContactId not found' });
       }
   
-      const contactId = location.contactId;
-      console.log("The find by id",contactId)
-      res.status(200).json({ contactId });
+      res.status(200).json({ message: 'ContactId found', location });
     } catch (error) {
-      console.log("The error of find by id",contactId);
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
