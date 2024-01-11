@@ -1,15 +1,15 @@
 var express = require('express');
 var router = express.Router();
-const cors = require('cors');
-var app = express();
-const corsOptions = {
-  origin: ['https://apac-01.workspaces.avayacloud.com', 'https://demoapp.sysgrate.com'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // enable passing of cookies, if applicable
-  optionsSuccessStatus: 204,
-};
+// const cors = require('cors');
+// var app = express();
+// const corsOptions = {
+//   origin: ['https://apac-01.workspaces.avayacloud.com', 'https://demoapp.sysgrate.com'],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true, // enable passing of cookies, if applicable
+//   optionsSuccessStatus: 204,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 const mongoose = require('mongoose');
 
