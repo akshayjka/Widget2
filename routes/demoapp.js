@@ -3,7 +3,7 @@ var router = express.Router();
 const cors = require('cors');
 var app = express();
 const corsOptions = {
-  origin: 'https://apac-01.workspaces.avayacloud.com',
+  origin: ['https://apac-01.workspaces.avayacloud.com', 'https://demoapp.sysgrate.com'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // enable passing of cookies, if applicable
   optionsSuccessStatus: 204,
