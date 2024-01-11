@@ -90,8 +90,9 @@ const locationSchema = new mongoose.Schema({
 
   router.post('/saveLocation', async (req, res) => {
     try {
-      const { contactId ,latitude1, longitude1, } = req.body;
       console.log("Before saving contact log", req.body)
+      const { contactId ,latitude1, longitude1, } = req.body;
+      
       const newLocation = new Location1({
         contactId,
         latitude1,
