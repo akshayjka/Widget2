@@ -17,18 +17,11 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 const corsOptions = {
-  origin: 'https://apac-01.workspaces.avayacloud.com',
+  origin: ['https://apac-01.workspaces.avayacloud.com ' , 'https://demoapp.sysgrate.com'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true, // enable passing of cookies, if applicable
   optionsSuccessStatus: 204,
 };
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
-});
 
 app.use(cors(corsOptions));
 
