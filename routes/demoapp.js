@@ -91,14 +91,13 @@ const locationSchema = new mongoose.Schema({
   router.post('/saveLocation', async (req, res) => {
     try {
       const { contactId ,latitude1, longitude1, } = req.body;
-  
+      console.log("Before saving contact log", req.body)
       const newLocation = new Location1({
         contactId,
         latitude1,
         longitude1,
-        
       });
-  
+      
       await newLocation.save();
       console.log("The save location to db is working", newLocation)
       res.status(200).json({ message: 'Location saved successfully' });
