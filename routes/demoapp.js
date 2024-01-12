@@ -29,12 +29,18 @@ const locationSchema = new mongoose.Schema({
   // Create a Mongoose model
   const Location = mongoose.model('Location', locationSchema);
 
-  router.get('/latest-location', async (req, res) => {
+  router.get('/latest-location/:contactId', async (req, res) => {
     try {
-      // Find the latest location data
-      const latestLocation = await Location.findOne({}, {}, { sort: { 'createdAt': -1 } });
+      const { contactId } = req.params;
   
-      res.json(latestLocation);
+      // Find locations based on the provided contactId
+      const locations = await Location1.find({ contactId });
+  
+      if (locations.length === 0) {
+        return res.status(404).json({ message: 'No locations found for the specified contactId' });
+      }
+  
+      res.status(200).json({ message: 'Locations retrieved successfully', locations });
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
