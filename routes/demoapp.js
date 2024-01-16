@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const { MongoClient } = require('mongodb');
 // const cors = require('cors');
 // var app = express();
 // const corsOptions = {
@@ -131,6 +132,35 @@ const locationSchema = new mongoose.Schema({
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
+  router.get('/getLatestData', async (req, res) => {
+    const uri = 'mongodb+srv://akshayjai19001900:Akshay_2001@cluster0.fy17wn5.mongodb.net/CRM'; // Replace with your MongoDB connection URI
+    const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  
+    try {
+      console.log('Connecting to MongoDB...');
+      await client.connect();
+  
+      const database = client.db('CRM');
+      const collection = database.collection('users');
+  
+      // Find the latest document
+      const latestUser = await collection.findOne({}, { sort: { _id: -1 } });
+  
+      if (latestUser) {
+        console.log('Latest user found:', latestUser);
+        res.status(200).json(latestUser);
+      } else {
+        console.log('No user found');
+        res.status(404).json({ error: 'No user found' });
+      }
+    } catch (error) {
+      console.error('Error fetching latest user:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    } finally {
+      await client.close();
     }
   });
   
