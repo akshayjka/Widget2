@@ -150,7 +150,7 @@ const locationSchema = new mongoose.Schema({
       const latestUser = await collection.findOne({}, { sort: { _id: -1 } });
   
       if (latestUser) {
-        console.log('Latest user found:', latestUser);
+        console.log('Latest user found:', latestUser.acc_num);
         res.status(200).json(latestUser);
       } else {
         console.log('No user found');
