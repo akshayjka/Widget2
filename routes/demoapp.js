@@ -151,7 +151,7 @@ const locationSchema = new mongoose.Schema({
   
       if (latestUser) {
         console.log('Latest user found:', latestUser.acc_num);
-        res.status(200).json(latestUser);
+        res.status(200).json(latestUser.acc_num);
       } else {
         console.log('No user found');
         res.status(404).json({ error: 'No user found' });
