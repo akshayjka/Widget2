@@ -48,8 +48,8 @@ router.get('/getCustomerName/:customerNumber', async(req,res)=>{
 
 // Star
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/kevinSneha', function(req, res, next) {
+  res.send('310245672231');
 });
 
 module.exports = router;
