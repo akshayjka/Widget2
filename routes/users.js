@@ -49,7 +49,7 @@ router.get('/getCustomerName/:customerNumber', async(req,res)=>{
 // Star
 
 router.get('/kevinSneha', function(req, res, next) {
-  res.send(310245672231);
+  res.send("Kevin weds Sneha.. swathi reddy is waiting for you.. please love her");
 });
 
 module.exports = router;
